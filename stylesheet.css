@@ -48,9 +48,10 @@ body,html{
     flex-grow: 1 ;
     align-self: center;
     border-radius: .6vw;
-
+    display: flex;
     
 }
+
 .keys{
     display: flex;
     flex-direction: row-reverse;
@@ -67,6 +68,7 @@ button{
     max-width: 4.5vw;
     border-radius: 1vw;
     font-size: 1.5vw;
+    cursor: pointer;
 }
 .division{
     font-size: 6vw;
@@ -79,4 +81,23 @@ button{
     width: 5vw;
     display: flex;
     flex-direction: row-reverse;
+
 }
+.keypad button{
+    background-color: #585a66;
+}
+button:hover{
+    background-color: red;
+}
+.input{
+    align-self: flex-start;
+    display: flex;
+    font-size: 5vw;
+
+}
+.output{
+    align-self: flex-end;
+    margin-left: auto;
+    font-size: 5vw;
+}
+
