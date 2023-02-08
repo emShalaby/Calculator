@@ -1,27 +1,22 @@
-startBtn=document.querySelector('.start');
-closeBtn=document.querySelector('.close');
-light=document.querySelector('.light')
-input=document.querySelector('.input');
-numberBtns=document.querySelectorAll('.number');
-numberArr=[];
+const startBtn=document.querySelector('.start');
+const closeBtn=document.querySelector('.close');
+const clearBtn=document.querySelector('.clear');
+const light=document.querySelector('.light')
+const input=document.querySelector('.input');
+const numberBtns=document.querySelectorAll('.number');
+let numberArr=[];
+let state='off';
+
+//--------functions------------
+
+
+
 
 //--------EVENTS---------------
-startBtn.addEventListener('click',()=>{
-    input.style.display=('flex');
-    light.style.backgroundColor='yellow';
-})
 
-closeBtn.addEventListener('click',()=>{
-    
-    input.style.display='none';
+
+
+clearBtn.addEventListener('click',()=>{
     input.innerHTML='';
-    light.style.backgroundColor='white';
-})
-
-numberBtns.forEach(element => {
-    element.addEventListener('click',()=>{
-        input.innerHTML+=element.id;
-        numberArr.push(element.id);
-    }
-    )
+    numberArr=[];
 });
