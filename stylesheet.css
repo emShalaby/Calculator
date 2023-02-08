@@ -93,10 +93,11 @@ button:hover{
     background-color: red;
 }
 .input{
-    display: flex;
+    display: none;
     font-size: 3vw;
     flex-grow: 1;
     flex-wrap: wrap;
+    /* this is necessary to allow text wrapping */
     word-break: break-all;
 
     
@@ -109,3 +110,11 @@ button:hover{
     
 }
 
+.light{
+    width: 3vw;
+    background-color: white;
+    height: 2vh;
+    align-self: flex-end;
+    margin-right: 1vw;
+    border-radius: .5vw;
+}
