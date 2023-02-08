@@ -6,13 +6,21 @@ const output=document.getElementById('output');
 const numberBtns=document.querySelectorAll('.number');
 const operators=document.querySelectorAll('.operator');
 const equal=document.querySelector('#equal');
-const ans=document.getElementById('#ans');
+const ans=document.querySelector("#ans");
+const pos=document.querySelector('#pos');
 let cursor=document.getElementById('cursor');
-let numberArr=[];
+let inputArr=[];
 let currentOp='';
 let state='off';
+let Ans=0;
 //--------functions------------
-
+function operationsCheck(str){
+    let numbers=str.match('\\+|\d/g');
+    return numbers;
+}
+function add(a,b){
+    return a+b;
+}
 
 
 
@@ -26,7 +34,7 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
     digit.classList.add('digit');
     digit.innerHTML=`${e.id}`;
     input.insertBefore(digit,cursor);
-    numberArr.push(`${e.id}`);
+    inputArr.push(String(`${e.id}`));
 }
 ))
 
@@ -36,7 +44,7 @@ clearBtn.addEventListener('click',()=>{
     while(digits[0]){
         digits[0].parentNode.removeChild(digits[0]);
     }
-    numberArr=[];
+    inputArr=[];
  
 });
 
@@ -55,8 +63,12 @@ equal.addEventListener('click',()=>{
     while(digits[0]){
         digits[0].parentNode.removeChild(digits[0]);
     }
-    numberArr=[];
+    
+    
+    inputArr=[];
+    Ans=Number(output.innerHTML);
 })
+
 
 
 
