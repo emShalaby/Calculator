@@ -14,9 +14,24 @@ let state='off';
 
 //--------EVENTS---------------
 
-
+startBtn.addEventListener('click',()=>{
+    input.style.display='flex';
+    light.style.backgroundColor='yellow';
+    input.innerHTML='';
+    numberArr=[];
+}
+)
 
 clearBtn.addEventListener('click',()=>{
     input.innerHTML='';
     numberArr=[];
+ 
 });
+
+closeBtn.addEventListener('click',()=>{
+    light.style.backgroundColor='white';
+    input.innerHTML='';
+    numberArr=[];
+    input.style='none'
+}
+)
