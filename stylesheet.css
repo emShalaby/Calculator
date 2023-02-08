@@ -21,30 +21,33 @@ body,html{
     display: flex;
     justify-content: center;
     align-items: center;
+    
     height: 100%;
-    max-height: fit-content;
+    width: 100%;
     
 }
 .calculator{
     display: flex;
     flex-direction: column;
     max-width: 28vw;
-    max-height: 75vh;
-    height: 100%;
-    width: 100%;
+    min-width: 300px;
+    flex-grow: 1;
+    min-height: 300px;
     border: solid 2px gray;
     background-color: silver;
     flex-grow: 1;
     padding-top: 2vw;
     gap: 2vw;
     border-radius: 1vw;
+    padding-bottom: 2vw;
 
 }
 .screen{
-    max-width: 25vw;
-    max-height: 20vh;
+    width: 16vw;
+    min-width: 100px;
+    max-height: 18vh;
+    min-height: 130px;
     background: green;
-    flex-grow: 1 ;
     align-self: center;
     border-radius: .6vw;
     display: flex;
@@ -66,12 +69,15 @@ body,html{
     padding-left: 2vw;
 }
 button{
-    flex-grow: 1;
-    max-height: 5vh;
-    max-width: 4.5vw;
+
+    min-height: fit-content;
+    min-width:  fit-content;
     border-radius: 1vw;
     font-size: 1.5vw;
     cursor: pointer;
+    flex-grow: 1;
+    flex-shrink: 1;
+    
 }
 .division{
     font-size: 6vw;
@@ -94,17 +100,19 @@ button:hover{
 }
 #input{
     display: flex;
-    font-size: 3vw;
+    font-size: 7vh;
     flex-wrap: wrap;
     /* this is necessary to allow text wrapping */
     word-break: break-all;
     
 }
-.output{
+#output{
     display: none;
+    flex-direction: row-reverse;
     align-self: flex-end;
-    margin-left: auto;
-    font-size: 3.8vw;
+    margin-left: 20vw;
+    font-size: 7vh;
+
     
 }
 
@@ -128,9 +136,13 @@ button:hover{
     animation-iteration-count:infinite ;
 }
 #cursor{
-    height: 8vh;
+    height: 7vh;
     width: .2vw;
     margin-top: .3vw;
     margin-left: .1vw;
 
+}
+.digit{
+    height: fit-content;
+    width: fit-content;
 }
