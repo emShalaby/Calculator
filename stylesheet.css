@@ -36,10 +36,11 @@ body,html{
     border: solid 2px gray;
     background-color: silver;
     flex-grow: 1;
-    padding-top: 2vw;
+    padding: 2vh 1vw;
     gap: 2vw;
     border-radius: 1vw;
-    padding-bottom: 2vw;
+
+
 
 }
 .screen{
@@ -110,7 +111,7 @@ button:hover{
     display: none;
     flex-direction: row-reverse;
     align-self: flex-end;
-    margin-left: 20vw;
+
     font-size: 7vh;
 
     
@@ -145,4 +146,14 @@ button:hover{
 .digit{
     height: fit-content;
     width: fit-content;
+}
+.clear{
+    max-width: 60px;
+}
+.output-container{
+    align-self: flex-end;
+    display: flex;
+    justify-content: flex-end;
+    height: fit-content;
+    width: 100%;
 }
