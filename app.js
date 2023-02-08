@@ -15,8 +15,11 @@ console.log(input)
 
 //--------EVENTS---------------
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
-    digits.innerHTML+=`${e.id}`;
-
+    let digit=document.createElement('div');
+    digit.classList.add('digit');
+    digit.innerHTML=`${e.id}`;
+    input.insertBefore(digit,cursor);
+    numberArr.push(`${e.id}`);
 }
 ))
 
@@ -24,7 +27,10 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 
 
 clearBtn.addEventListener('click',()=>{
-    digits.innerHTML=''
+    let digits=document.getElementsByClassName('digit');
+    while(digits[0]){
+        digits[0].parentNode.removeChild(digits[0]);
+    }
     numberArr=[];
  
 });

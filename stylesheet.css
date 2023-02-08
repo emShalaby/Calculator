@@ -71,7 +71,7 @@ button{
     max-width: 4.5vw;
     border-radius: 1vw;
     font-size: 1.5vw;
-   
+    cursor: pointer;
 }
 .division{
     font-size: 6vw;
