@@ -33,28 +33,27 @@ function factorial(a){
     return fac;
 }
 function operate(){
-    let a='';
-    let b='';
+    numberArr=[];
+
     let result='';
     let digits=document.querySelectorAll('.digit')
     digits.forEach(d=>{
         result+=d.textContent;
     });
-    [a,b]=result.split(`${operator}`);
-    a=Number(a);
-    b=Number(b);
+    numberArr=result.split(`${operator}`);
+
     if (operator=='+'){
-        return add(a,b);
+        return numberArr.reduce((a,b)=>Number(a)+Number(b));
         
     }
     if (operator=='-'){
-        return subtract(a,b);
+        return numberArr.reduce((a,b)=>Number(a)-Number(b));
     }
     if (operator=='/'){
-        return division(a,b);
+        return numberArr.reduce((a,b)=>Number(a)/Number(b));
     }
     if (operator=='X'){
-        return multiply(a,b);
+        return numberArr.reduce((a,b)=>Number(a)*Number(b));
     }
 }
 //--------EVENTS---------------
@@ -85,7 +84,13 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     digit.classList.add('digit');
     digit.innerHTML=`${e.id}`;
     input.insertBefore(digit,cursor);
+    // let a='';
+    // let digits=document.querySelectorAll('.digit')
+    // digits.forEach(d=>{
+    //     a=d.textContent;
+    // });
     operator=`${e.id}`;
+
  
 }
 )
