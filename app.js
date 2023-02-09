@@ -9,21 +9,54 @@ const equal=document.querySelector('#equal');
 const ans=document.querySelector("#ans");
 const pos=document.querySelector('#pos');
 let cursor=document.getElementById('cursor');
-let inputArr=[];
-let currentOp='';
-let state='off';
 let Ans=0;
+let operator=''
 //--------functions------------
-function operationsCheck(str){
-    let numbers=str.match('\\+|\d/g');
-    return numbers;
-}
+
 function add(a,b){
     return a+b;
 }
-
-
-
+function subtract(a,b){
+    return a-b;
+}
+function multiply(a,b){
+    return a*b;
+}
+function division(a,b){
+    return a/b;
+}
+function factorial(a){
+    let fac=1;
+    for(let i=a; i>0; i--){
+      fac*=i;
+    }
+    return fac;
+}
+function operate(){
+    let a='';
+    let b='';
+    let result='';
+    let digits=document.querySelectorAll('.digit')
+    digits.forEach(d=>{
+        result+=d.textContent;
+    });
+    [a,b]=result.split(`${operator}`);
+    a=Number(a);
+    b=Number(b);
+    if (operator=='+'){
+        return add(a,b);
+        
+    }
+    if (operator=='-'){
+        return subtract(a,b);
+    }
+    if (operator=='/'){
+        return division(a,b);
+    }
+    if (operator=='X'){
+        return multiply(a,b);
+    }
+}
 //--------EVENTS---------------
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
     output.style.display='none';
@@ -34,7 +67,6 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
     digit.classList.add('digit');
     digit.innerHTML=`${e.id}`;
     input.insertBefore(digit,cursor);
-    inputArr.push(String(`${e.id}`));
 }
 ))
 
@@ -44,8 +76,8 @@ clearBtn.addEventListener('click',()=>{
     while(digits[0]){
         digits[0].parentNode.removeChild(digits[0]);
     }
-    inputArr=[];
- 
+    output.innerHTML='';
+    output.style.display='none';
 });
 
 operators.forEach(e=>e.addEventListener('click',()=>{
@@ -53,21 +85,22 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     digit.classList.add('digit');
     digit.innerHTML=`${e.id}`;
     input.insertBefore(digit,cursor);
-    currentOp=e;
+    operator=`${e.id}`;
+ 
 }
 )
 )
 equal.addEventListener('click',()=>{
     output.style.display='flex';
     let digits=document.getElementsByClassName('digit');
+    // to clear input display
+    output.innerHTML=operate();
+    Ans=operate();
     while(digits[0]){
         digits[0].parentNode.removeChild(digits[0]);
     }
-    
-    
-    inputArr=[];
-    Ans=Number(output.innerHTML);
 })
+
 
 
 
