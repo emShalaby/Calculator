@@ -12,11 +12,7 @@ body,html{
     width: 100%;
 
 }
-.header{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 .content{
     display: flex;
     justify-content: center;

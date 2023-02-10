@@ -66,6 +66,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     if (operator==''){
         digits.innerHTML=''
         operator=`${e.id}`;
+        digitArr=[digitArr.join('')];
         digitArr.push(operator);
 
     }
@@ -73,10 +74,21 @@ operators.forEach(e=>e.addEventListener('click',()=>{
 
 equal.addEventListener('click',()=>{
     if (operator!=''){
+    let digitArr2=digitArr.slice(2).join('');
+    digitArr[2]=digitArr2;
     Ans=operate();
     output.style.display='flex';
     output.innerHTML=Ans;}
     
+})
+
+clearBtn.addEventListener('click',()=>{
+    Ans=0;
+    output.style.display='none';
+    output.innerHTML='';
+    digits.innerHTML='';
+    digitArr=[];
+    operator='';
 })
 
 
