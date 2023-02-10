@@ -42,7 +42,7 @@ function operate(){
     console.log(numberArr);
     if (operator=='+'){
             
-            return numberArr.reduce((a,b)=>Number(a)+Number(b));
+        return numberArr.reduce((a,b)=>Number(a)+Number(b));
         
         }
     if (operator=='-'){
@@ -59,11 +59,13 @@ function operate(){
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
+    if (digitArr.length<14){
     digits.style.display='flex';
     output.style.display='none';
     output.innerHTML='';
     digits.innerHTML+=`${e.id}`;
     digitArr.push(`${e.id}`);
+    }
 }))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
