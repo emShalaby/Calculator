@@ -45,7 +45,7 @@ body,html{
 
     min-width: 100px;
     max-height: 18vh;
-    min-height: 100px;
+    min-height: 120px;
     background: green;
     align-self: center;
     border-radius: .6vw;
