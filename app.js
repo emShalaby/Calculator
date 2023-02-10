@@ -18,21 +18,22 @@ let operator=''
 
 function add(a,b) {
     return a+b;
-  };
+  }
   
  function subtract(a,b) {
     return a-b;
-  };
+ }
   
 
   
-function multiply(arr=[]) {
-      let x=1;
-    for (let i =0; i<arr.length; i++){
-      x*=arr[i];
-    }
-    return x;
-  };
+function multiply(a,b) {
+
+    return a*b;
+  }
+
+function divide(a,b){
+    return a/b;
+}
 function factorial(a){
     let fac=1;
     for(let i=a; i>0; i--){
@@ -45,7 +46,7 @@ const OPS_FNS={
     "+":add,
     "-":subtract,
     "X":multiply,
-    "/":div,
+    "/":divide,
 
 };
 
@@ -55,8 +56,8 @@ function operate(){
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
-    console.log(numberArr);
-    return OPS_FNS[operator][digitArr[0]][digitArr[1]];
+    console.log(numberArr[0]);
+    return OPS_FNS[operator]([parseFloat(numberArr[0])],[parseFloat(numberArr[1])]);
 }
 //--------EVENTS---------------
 
