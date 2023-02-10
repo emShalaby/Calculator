@@ -25,12 +25,10 @@ function factorial(a){
 }
 
 function operate(){
-    console.log(digitArr);
     // to extract the operator
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
-    console.log(numberArr);
     try{
     if (operator=='+'){
             
@@ -92,7 +90,6 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     operator=`${e.id}`;
     digitArr=[digitArr.join('')];
     digitArr.push(operator);
-    console.log(digitArr);
     }
     if (digitArr[0]==''){
         digitArr=[];
