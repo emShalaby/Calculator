@@ -9,6 +9,7 @@ const equal=document.querySelector('#equal');
 const ans=document.querySelector("#ans");
 const pos=document.querySelector('#pos');
 const digits=document.querySelector('.digit');
+const answerBtn=document.querySelector('#answer')
 let cursor=document.getElementById('cursor');
 let digitArr=[];
 let Ans=0;
@@ -58,7 +59,9 @@ function operate(){
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
-    
+    digits.style.display='flex';
+    output.style.display='none';
+    output.innerHTML='';
     digits.innerHTML+=`${e.id}`;
     digitArr.push(`${e.id}`);
 }))
@@ -74,7 +77,9 @@ operators.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 equal.addEventListener('click',()=>{
+    digits.innerHTML=''
     if (operator!=''){
+    
     let digitArr2=digitArr.slice(2).join('');
     digitArr[2]=digitArr2;
     
@@ -83,7 +88,10 @@ equal.addEventListener('click',()=>{
     }
     Ans=operate();
     output.style.display='flex';
-    output.innerHTML=Ans;}
+    output.innerHTML=Ans;
+    operator='';
+    digitArr=[];
+}
     
 })
 
@@ -95,7 +103,12 @@ clearBtn.addEventListener('click',()=>{
     digitArr=[];
     operator='';
 })
-
+answerBtn.addEventListener('click',()=>{
+    digits.innerHTML+='Ans';
+    digitArr.push(Ans);
+    output.innerHTML='';
+    output.style.display='none';
+})
 
 
 
