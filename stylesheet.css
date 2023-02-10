@@ -29,7 +29,7 @@ body,html{
     min-width: fit-content;
     flex-grow: 1;
     min-height: fit-content;
-    border: solid 2px gray;
+    border: solid 3px rgb(89, 89, 247);
     background-color: silver;
     flex-grow: 1;
     padding: 2vh 1vw;

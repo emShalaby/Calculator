@@ -53,6 +53,8 @@ function operate(){
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
+    //so that you can add numbers when Ans is on screen
+    if (digits.textContent!='Ans'){
     if (digitArr.length<14){
     digits.style.display='flex';
     output.style.display='none';
@@ -60,6 +62,7 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
     digits.textContent+=`${e.id}`;
     digitArr.push(`${e.id}`);
     }
+}
 }))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
@@ -91,7 +94,10 @@ operators.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 equal.addEventListener('click',()=>{
+    
     digits.textContent=''
+    
+    
     if (operator!=''){
     
     let digitArr2=digitArr.slice(2).join('');
@@ -105,7 +111,16 @@ equal.addEventListener('click',()=>{
     output.textContent=Ans;
     operator='';
     digitArr=[];
+    return;
 }
+    else{
+        Ans=digitArr.join('');
+        output.style.display='flex';
+        output.textContent=Ans;
+        digitArr=[];
+        
+
+    }
     
 })
 
@@ -118,14 +133,21 @@ clearBtn.addEventListener('click',()=>{
     operator='';
 })
 answerBtn.addEventListener('click',()=>{
-    digits.textContent+='Ans';
+    if (digits.textContent!='Ans'){
+    digits.textContent='Ans';
     digitArr.push(Ans);
     output.textContent='';
     output.style.display='none';
+    }
 })
 delBtn.addEventListener('click',()=>{
     digitArr.pop();
+    if (digits.textContent=='Ans'){
+        digits.textContent='';
+    }
+    else{
     digits.textContent=digits.textContent.slice(0,-1);
+    }
 })
 
 decimal.addEventListener('click',()=>{
