@@ -1,18 +1,15 @@
 
 const clearBtn=document.querySelector('.clear');
-const light=document.querySelector('.light')
 const input=document.getElementById('input');
 const output=document.getElementById('output');
 const numberBtns=document.querySelectorAll('.number');
 const operators=document.querySelectorAll('.operator');
 const equal=document.querySelector('#equal');
 const ans=document.querySelector("#ans");
-const pos=document.querySelector('#pos');
 const digits=document.querySelector('.digit');
 const answerBtn=document.querySelector('#answer');
 const delBtn=document.querySelector('.del');
 const decimal=document.querySelector('.decimal')
-let cursor=document.getElementById('cursor');
 let digitArr=[];
 let Ans=0;
 let operator=''
