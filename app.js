@@ -9,7 +9,8 @@ const ans=document.querySelector("#ans");
 const digits=document.querySelector('.digit');
 const answerBtn=document.querySelector('#answer');
 const delBtn=document.querySelector('.del');
-const decimal=document.querySelector('.decimal')
+const decimal=document.querySelector('.decimal');
+const prevInput=document.querySelector('#prev-input');
 let digitArr=[];
 let Ans=0;
 let operator=''
@@ -92,14 +93,15 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     if (digitArr[0]==''){
         digitArr=[];
     }
-
-
+    if(digitArr[0]&&digitArr[1]){
+    prevInput.textContent=digitArr[0]+digitArr[1];
+    }
 }))
 
 equal.addEventListener('click',()=>{
 
     
-    
+    prevInput.innerHTML='';
     if (operator!=''){
     
     let digitArr2=digitArr.slice(2).join('');
