@@ -26,8 +26,9 @@ function factorial(a){
 function operate(){
     console.log(digitArr);
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
-    let =numberArr=digitArr.filter(e=>e!=x);
+    let numberArr=digitArr.filter(e=>e!=x);
     console.log(numberArr);
+    try{
     if (operator=='+'){
             
         return numberArr.reduce((a,b)=>parseFloat(a)+parseFloat(b));
@@ -46,6 +47,10 @@ function operate(){
     if (operator=='^'){
         return numberArr.reduce((a,b)=>parseFloat(a)**parseFloat(b));
     }
+}
+catch(error){
+    return 0;
+}
 }
 //--------EVENTS---------------
 
@@ -70,29 +75,29 @@ operators.forEach(e=>e.addEventListener('click',()=>{
         digitArr=[];
         output.innerHTML=Ans;
         output.style.display='flex';
-        return;
 
     }
-    if (operator!=''){
+    else if (operator!=''){
         operator=`${e.id}`;
         digitArr[1]=e.id;
         
     }
-    if (operator==''){
+    else if (operator==''){
     digits.textContent='';
     operator=`${e.id}`;
     digitArr=[digitArr.join('')];
     digitArr.push(operator);
     console.log(digitArr);
     }
-
+    if (digitArr[0]==''){
+        digitArr=[];
+    }
 
 
 }))
 
 equal.addEventListener('click',()=>{
-    
-    digits.textContent=''
+
     
     
     if (operator!=''){
@@ -104,11 +109,17 @@ equal.addEventListener('click',()=>{
         digitArr.pop();
     }
     Ans=operate();
-    output.style.display='flex';
-    output.textContent=Ans;
-    operator='';
-    digitArr=[];
-    return;
+        if(digitArr[0]!=operator &&digitArr[1]!='' &&digitArr[2]!=''){
+        digits.textContent=''
+        output.style.display='flex';
+        output.textContent=Ans;
+        operator='';
+        digitArr=[];
+        return;
+        }
+        else{
+            Ans=0;
+        }
 }
     else{
         Ans=digitArr.join('');
@@ -132,7 +143,18 @@ clearBtn.addEventListener('click',()=>{
 answerBtn.addEventListener('click',()=>{
     if (digits.textContent!='Ans'){
     digits.textContent='Ans';
-    digitArr.push(Ans);
+        if (digitArr[1]==operator){
+            digitArr[2]=Ans;
+            while(digitArr[3]){
+                digitArr.pop();
+            }
+        }
+        else {
+            digitArr[0]=Ans;
+            while(digitArr[1]){
+                digitArr.pop();
+            }
+        }
     output.textContent='';
     output.style.display='none';
     }
