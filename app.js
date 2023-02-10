@@ -76,7 +76,6 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     if (operator!=''){
         operator=`${e.id}`;
         digitArr[1]=e.id;
-        console.log(digitArr);
     }
     if (operator==''){
     digits.textContent='';
@@ -85,6 +84,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     digitArr.push(operator);
     console.log(digitArr);
     }
+
 
 }))
 
