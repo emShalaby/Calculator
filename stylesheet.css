@@ -162,6 +162,6 @@ button:hover{
 .operator{
     background-color: orange;
 }
-.clear{
+.clear,.del{
     background-color: lightskyblue;
 }

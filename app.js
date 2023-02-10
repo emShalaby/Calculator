@@ -9,7 +9,8 @@ const equal=document.querySelector('#equal');
 const ans=document.querySelector("#ans");
 const pos=document.querySelector('#pos');
 const digits=document.querySelector('.digit');
-const answerBtn=document.querySelector('#answer')
+const answerBtn=document.querySelector('#answer');
+const delBtn=document.querySelector('.del');
 let cursor=document.getElementById('cursor');
 let digitArr=[];
 let Ans=0;
@@ -120,6 +121,10 @@ answerBtn.addEventListener('click',()=>{
     digitArr.push(Ans);
     output.textContent='';
     output.style.display='none';
+})
+delBtn.addEventListener('click',()=>{
+    digitArr.pop();
+    digits.textContent=digits.textContent.slice(0,-1);
 })
 
 
