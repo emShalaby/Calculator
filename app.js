@@ -11,24 +11,13 @@ const pos=document.querySelector('#pos');
 const digits=document.querySelector('.digit');
 const answerBtn=document.querySelector('#answer');
 const delBtn=document.querySelector('.del');
+const decimal=document.querySelector('.decimal')
 let cursor=document.getElementById('cursor');
 let digitArr=[];
 let Ans=0;
 let operator=''
 //--------functions------------
 
-function add(a,b){
-    return a+b;
-}
-function subtract(a,b){
-    return a-b;
-}
-function multiply(a,b){
-    return a*b;
-}
-function division(a,b){
-    return a/b;
-}
 function factorial(a){
     let fac=1;
     for(let i=a; i>0; i--){
@@ -44,21 +33,21 @@ function operate(){
     console.log(numberArr);
     if (operator=='+'){
             
-        return numberArr.reduce((a,b)=>Number(a)+Number(b));
+        return numberArr.reduce((a,b)=>parseFloat(a)+parseFloat(b));
         
         }
     if (operator=='-'){
-        return numberArr.reduce((a,b)=>Number(a)-Number(b));
+        return numberArr.reduce((a,b)=>parseFloat(a)-parseFloat(b));
         }
     if (operator=='/'){
-        return numberArr.reduce((a,b)=>Number(a)/Number(b));
+        return numberArr.reduce((a,b)=>parseFloat(a)/parseFloat(b));
         }
     if (operator=='X'){
-        return numberArr.reduce((a,b)=>Number(a)*Number(b));
+        return numberArr.reduce((a,b)=>parseFloat(a)*parseFloat(b));
         }
     
     if (operator=='^'){
-        return numberArr.reduce((a,b)=>Number(a)**Number(b));
+        return numberArr.reduce((a,b)=>parseFloat(a)**parseFloat(b));
     }
 }
 //--------EVENTS---------------
@@ -87,6 +76,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     if (operator!=''){
         operator=`${e.id}`;
         digitArr[1]=e.id;
+        
     }
     if (operator==''){
     digits.textContent='';
@@ -138,5 +128,10 @@ delBtn.addEventListener('click',()=>{
     digits.textContent=digits.textContent.slice(0,-1);
 })
 
-
-
+decimal.addEventListener('click',()=>{
+    if (digitArr[-1]!='.'){
+        digitArr.push('.');
+        digits.textContent+='.';
+    }
+    
+})
