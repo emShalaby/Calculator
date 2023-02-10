@@ -26,7 +26,9 @@ function factorial(a){
 
 function operate(){
     console.log(digitArr);
+    // to extract the operator
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
+    // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
     console.log(numberArr);
     try{
@@ -56,8 +58,9 @@ catch(error){
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
-    //so that you can add numbers when Ans is on screen
+    //so that you cant add numbers when Ans is on screen
     if (digits.textContent!='Ans'){
+    //max input length
     if (digitArr.length<14){
     digits.style.display='flex';
     output.style.display='none';
@@ -69,12 +72,13 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
-    if (e.id=='!'){
-        digitArr=[digitArr.join('')];
+    //factorial is just built different
+    if (e.id=='!' &&!digitArr[1]){
+        digitArr=digitArr.join('');
         Ans=factorial(digitArr[0]);
-        digits.innerHTML='';
+        digits.textContent='';
         digitArr=[];
-        output.innerHTML=Ans;
+        output.textContent=Ans;
         output.style.display='flex';
 
     }
@@ -132,6 +136,7 @@ equal.addEventListener('click',()=>{
 
     }
     
+
 })
 
 clearBtn.addEventListener('click',()=>{
@@ -161,6 +166,13 @@ answerBtn.addEventListener('click',()=>{
     output.textContent='';
     output.style.display='none';
     }
+    if (isNaN(Ans)){
+        ans=0;
+        digitArr=[]
+        digits.textContent='';
+        output.textContent='';
+    }
+
 })
 delBtn.addEventListener('click',()=>{
     digitArr.pop();
@@ -173,7 +185,7 @@ delBtn.addEventListener('click',()=>{
 })
 
 decimal.addEventListener('click',()=>{
-    if (digitArr[-1]!='.'){
+    if (digitArr[-1]!='.' && digitArr[0]){
         digitArr.push('.');
         digits.textContent+='.';
     }
