@@ -154,3 +154,6 @@ button:hover{
 .clear,.del{
     background-color: lightskyblue;
 }
+#answer{
+    background-color: yellow;
+}

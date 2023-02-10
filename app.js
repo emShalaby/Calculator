@@ -78,7 +78,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
         output.style.display='flex';
 
     }
-    else if (operator!=''){
+    else if (operator!=(''|'!')){
         operator=`${e.id}`;
         digitArr[1]=e.id;
         
@@ -101,7 +101,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
 equal.addEventListener('click',()=>{
 
     
-    prevInput.innerHTML='';
+    prevInput.textContent='';
     if (operator!=''){
     
     let digitArr2=digitArr.slice(2).join('');
@@ -141,6 +141,7 @@ clearBtn.addEventListener('click',()=>{
     digits.textContent='';
     digitArr=[];
     operator='';
+    prevInput.textContent='';
 })
 answerBtn.addEventListener('click',()=>{
     if (digits.textContent!='Ans'){
