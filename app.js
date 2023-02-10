@@ -35,6 +35,7 @@ function factorial(a){
     return fac;
 }
 function operate(){
+    console.log(digitArr);
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     let =numberArr=digitArr.filter(e=>e!=x);
     console.log(numberArr);
@@ -76,6 +77,10 @@ equal.addEventListener('click',()=>{
     if (operator!=''){
     let digitArr2=digitArr.slice(2).join('');
     digitArr[2]=digitArr2;
+    
+    while (digitArr[3]){
+        digitArr.pop();
+    }
     Ans=operate();
     output.style.display='flex';
     output.innerHTML=Ans;}
