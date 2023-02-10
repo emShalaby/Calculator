@@ -35,6 +35,7 @@ function factorial(a){
     }
     return fac;
 }
+
 function operate(){
     console.log(digitArr);
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
@@ -54,16 +55,19 @@ function operate(){
     if (operator=='X'){
         return numberArr.reduce((a,b)=>Number(a)*Number(b));
         }
+    
+    if (operator=='^'){
+        return numberArr.reduce((a,b)=>Number(a)**Number(b));
     }
-
+}
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
     if (digitArr.length<14){
     digits.style.display='flex';
     output.style.display='none';
-    output.innerHTML='';
-    digits.innerHTML+=`${e.id}`;
+    output.textContent='';
+    digits.textContent+=`${e.id}`;
     digitArr.push(`${e.id}`);
     }
 }))
@@ -75,7 +79,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
         console.log(digitArr);
     }
     if (operator==''){
-    digits.innerHTML='';
+    digits.textContent='';
     operator=`${e.id}`;
     digitArr=[digitArr.join('')];
     digitArr.push(operator);
@@ -85,7 +89,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 equal.addEventListener('click',()=>{
-    digits.innerHTML=''
+    digits.textContent=''
     if (operator!=''){
     
     let digitArr2=digitArr.slice(2).join('');
@@ -96,7 +100,7 @@ equal.addEventListener('click',()=>{
     }
     Ans=operate();
     output.style.display='flex';
-    output.innerHTML=Ans;
+    output.textContent=Ans;
     operator='';
     digitArr=[];
 }
@@ -106,15 +110,15 @@ equal.addEventListener('click',()=>{
 clearBtn.addEventListener('click',()=>{
     Ans=0;
     output.style.display='none';
-    output.innerHTML='';
-    digits.innerHTML='';
+    output.textContent='';
+    digits.textContent='';
     digitArr=[];
     operator='';
 })
 answerBtn.addEventListener('click',()=>{
-    digits.innerHTML+='Ans';
+    digits.textContent+='Ans';
     digitArr.push(Ans);
-    output.innerHTML='';
+    output.textContent='';
     output.style.display='none';
 })
 
