@@ -39,7 +39,8 @@ function operate(){
         return numberArr.reduce((a,b)=>parseFloat(a)-parseFloat(b));
         }
     if (operator=='/'){
-        return numberArr.reduce((a,b)=>parseFloat(a)/parseFloat(b));
+        
+        return numberArr.reduce((a,b)=>{parseFloat(a)/parseFloat(b)});
         }
     if (operator=='X'){
         return numberArr.reduce((a,b)=>parseFloat(a)*parseFloat(b));
