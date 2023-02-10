@@ -74,6 +74,16 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
+    if (e.id=='!'){
+        digitArr=[digitArr.join('')];
+        Ans=factorial(digitArr[0]);
+        digits.innerHTML='';
+        digitArr=[];
+        output.innerHTML=Ans;
+        output.style.display='flex';
+        return;
+
+    }
     if (operator!=''){
         operator=`${e.id}`;
         digitArr[1]=e.id;
@@ -85,6 +95,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     digitArr.push(operator);
     console.log(digitArr);
     }
+
 
 
 }))
