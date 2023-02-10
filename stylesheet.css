@@ -29,25 +29,27 @@ body,html{
 .calculator{
     display: flex;
     flex-direction: column;
-    max-width: 28vw;
-    min-width: 300px;
+    max-width: 35vw;
+    min-width: fit-content;
     flex-grow: 1;
-    min-height: 300px;
+    min-height: fit-content;
     border: solid 2px gray;
     background-color: silver;
     flex-grow: 1;
     padding: 2vh 1vw;
     gap: 2vw;
     border-radius: 1vw;
+    height: 90vh;
+    justify-content: space-evenly;
 
 
 
 }
 .screen{
-    width: 16vw;
+
     min-width: 100px;
     max-height: 18vh;
-    min-height: 130px;
+    min-height: 100px;
     background: green;
     align-self: center;
     border-radius: .6vw;
@@ -55,7 +57,7 @@ body,html{
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    
+    flex-grow: 1;
 }
 
 .keys{
@@ -74,7 +76,7 @@ button{
     min-height: fit-content;
     min-width:  fit-content;
     border-radius: 1vw;
-    font-size: 1.5vw;
+    font-size: 4vH;
     cursor: pointer;
     flex-grow: 1;
     flex-shrink: 1;
@@ -101,10 +103,12 @@ button:hover{
 }
 #input{
     display: flex;
-    font-size: 7vh;
+    font-size: 8vh;
     flex-wrap: wrap;
     /* this is necessary to allow text wrapping */
     word-break: break-all;
+    width: fit-content;
+    height: fit-content;
     
 }
 #output{
@@ -135,18 +139,19 @@ button:hover{
     animation-name:example ;
     animation-duration: 1s;
     animation-iteration-count:infinite ;
-}
-#cursor{
     height: 7vh;
     width: .2vw;
     margin-top: .3vw;
     margin-left: .1vw;
+    display: inline-block;
 
 }
+
 
 .digit{
     height: fit-content;
     width: fit-content;
+    display: inline-block
 }
 .clear{
     max-width: 60px;

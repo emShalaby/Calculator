@@ -8,7 +8,9 @@ const operators=document.querySelectorAll('.operator');
 const equal=document.querySelector('#equal');
 const ans=document.querySelector("#ans");
 const pos=document.querySelector('#pos');
+const digits=document.querySelector('.digit');
 let cursor=document.getElementById('cursor');
+let digitArr=[];
 let Ans=0;
 let operator=''
 //--------functions------------
@@ -33,81 +35,49 @@ function factorial(a){
     return fac;
 }
 function operate(){
-    numberArr=[];
-
-    let result='';
-    let digits=document.querySelectorAll('.digit')
-    digits.forEach(d=>{
-        result+=d.textContent;
-    });
-    numberArr=result.split(`${operator}`);
-
+    let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
+    let =numberArr=digitArr.filter(e=>e!=x);
+    console.log(numberArr);
     if (operator=='+'){
-        return numberArr.reduce((a,b)=>Number(a)+Number(b));
+            
+            return numberArr.reduce((a,b)=>Number(a)+Number(b));
         
-    }
+        }
     if (operator=='-'){
         return numberArr.reduce((a,b)=>Number(a)-Number(b));
-    }
+        }
     if (operator=='/'){
         return numberArr.reduce((a,b)=>Number(a)/Number(b));
-    }
+        }
     if (operator=='X'){
         return numberArr.reduce((a,b)=>Number(a)*Number(b));
+        }
     }
-}
+
 //--------EVENTS---------------
+
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
-    output.style.display='none';
-    let digits=document.getElementsByClassName('digit');
-    if (digits[25]) return;
-
-    let digit=document.createElement('div');
-    digit.classList.add('digit');
-    digit.innerHTML=`${e.id}`;
-    input.insertBefore(digit,cursor);
-}
-))
-
-
-clearBtn.addEventListener('click',()=>{
-    let digits=document.getElementsByClassName('digit');
-    while(digits[0]){
-        digits[0].parentNode.removeChild(digits[0]);
-    }
-    output.innerHTML='';
-    output.style.display='none';
-});
+    
+    digits.innerHTML+=`${e.id}`;
+    digitArr.push(`${e.id}`);
+}))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
-    let digit=document.createElement('div');
-    digit.classList.add('digit');
-    digit.innerHTML=`${e.id}`;
-    input.insertBefore(digit,cursor);
-    // let a='';
-    // let digits=document.querySelectorAll('.digit')
-    // digits.forEach(d=>{
-    //     a=d.textContent;
-    // });
-    operator=`${e.id}`;
+    if (operator==''){
+        digits.innerHTML=''
+        operator=`${e.id}`;
+        digitArr.push(operator);
 
- 
-}
-)
-)
-equal.addEventListener('click',()=>{
-    output.style.display='flex';
-    let digits=document.getElementsByClassName('digit');
-    // to clear input display
-    output.innerHTML=operate();
-    Ans=operate();
-    while(digits[0]){
-        digits[0].parentNode.removeChild(digits[0]);
     }
+}))
+
+equal.addEventListener('click',()=>{
+    if (operator!=''){
+    Ans=operate();
+    output.style.display='flex';
+    output.innerHTML=Ans;}
+    
 })
-
-
-
 
 
 
