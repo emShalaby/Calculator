@@ -16,6 +16,23 @@ let Ans=0;
 let operator=''
 //--------functions------------
 
+function add(a,b) {
+    return a+b;
+  };
+  
+ function subtract(a,b) {
+    return a-b;
+  };
+  
+
+  
+function multiply(arr=[]) {
+      let x=1;
+    for (let i =0; i<arr.length; i++){
+      x*=arr[i];
+    }
+    return x;
+  };
 function factorial(a){
     let fac=1;
     for(let i=a; i>0; i--){
@@ -24,6 +41,14 @@ function factorial(a){
     return fac;
 }
 
+const OPS_FNS={
+    "+":add,
+    "-":subtract,
+    "X":multiply,
+    "/":div,
+
+};
+
 function operate(){
     console.log(digitArr);
     // to extract the operator
@@ -31,29 +56,7 @@ function operate(){
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
     console.log(numberArr);
-    try{
-    if (operator=='+'){
-            
-        return numberArr.reduce((a,b)=>parseFloat(a)+parseFloat(b));
-        
-        }
-    if (operator=='-'){
-        return numberArr.reduce((a,b)=>parseFloat(a)-parseFloat(b));
-        }
-    if (operator=='/'){
-        return numberArr.reduce((a,b)=>parseFloat(a)/parseFloat(b));
-        }
-    if (operator=='X'){
-        return numberArr.reduce((a,b)=>parseFloat(a)*parseFloat(b));
-        }
-    
-    if (operator=='^'){
-        return numberArr.reduce((a,b)=>parseFloat(a)**parseFloat(b));
-    }
-}
-catch(error){
-    return 0;
-}
+    return OPS_FNS[operator][digitArr[0]][digitArr[1]];
 }
 //--------EVENTS---------------
 
