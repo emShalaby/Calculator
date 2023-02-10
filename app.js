@@ -71,16 +71,18 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 
 operators.forEach(e=>e.addEventListener('click',()=>{
     //factorial is just built different
-    if (e.id=='!' &&!digitArr[1]){
+    if (e.id=='!' &&operator==''){
         digitArr=digitArr.join('');
-        Ans=factorial(digitArr[0]);
+        console.log(digitArr);
+        Ans=factorial(digitArr);
         digits.textContent='';
         digitArr=[];
         output.textContent=Ans;
         output.style.display='flex';
+        return;
 
     }
-    else if (operator!=(''|'!')){
+    else if (operator!=('')){
         operator=`${e.id}`;
         digitArr[1]=e.id;
         
