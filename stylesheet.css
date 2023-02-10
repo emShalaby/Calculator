@@ -10,6 +10,7 @@ body,html{
     flex-direction: column;
     height: 100%;
     width: 100%;
+    font-family: 'Calculator', sans-serif;
 
 }
 

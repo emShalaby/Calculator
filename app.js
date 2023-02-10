@@ -182,9 +182,8 @@ delBtn.addEventListener('click',()=>{
 })
 
 decimal.addEventListener('click',()=>{
-    if (digitArr[-1]!='.' && digitArr[0]){
-        digitArr.push('.');
-        digits.textContent+='.';
+    if (digitArr.at(-1)!="."){
+    digitArr.push('.');
+    digits.textContent+='.';
     }
-    
 })
