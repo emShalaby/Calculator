@@ -186,7 +186,14 @@ answerBtn.addEventListener('click',()=>{
 })
 
 delBtn.addEventListener('click',()=>{
-
+    if(digits.textContent==''&&prevInput.textContent==''){
+        return;
+    }
+    if(digits.textContent=='Ans'){
+        digitArr.pop();
+        digits.textContent='';
+        return;
+    }
     // last digit
     let lastDigit=digitArr[digitArr.length-1];
     if (lastDigit==operator){
