@@ -30,6 +30,9 @@ function multiply(a,b) {
   }
 
 function divide(a,b){
+    if(b==0){
+        return 'ERROR';
+    }
     return a/b;
 }
 function factorial(a){
@@ -37,6 +40,7 @@ function factorial(a){
     for(let i=a; i>0; i--){
       fac*=i;
     }
+
     return fac;
 }
 function power(a,b){
@@ -123,11 +127,17 @@ equal.addEventListener('click',()=>{
     while (digitArr[3]){
         digitArr.pop();
     }
-    Ans=operate();
+        Ans=operate();
+
+
         if(digitArr[0]!=operator &&digitArr[1]!='' &&digitArr[2]!=''){
         digits.textContent=''
         output.style.display='flex';
         output.textContent=Ans;
+        if (Ans=='ERROR'){
+            Ans=0;
+            output.textContent='ERROR';
+        }
         operator='';
         digitArr=[];
         return;
