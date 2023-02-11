@@ -80,7 +80,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     if(digits.textContent==''&&prevInput.textContent==''){
         return
     }
-    if (operator!=''){
+    if (operator!='' &&e.id!='!'){
         digitArr[digitArr.indexOf(operator)]=e.id;
         digitArr.filter(e=>e!='');
         prevInput.textContent=prevInput.textContent.replace(operator,e.id)
@@ -99,13 +99,14 @@ operators.forEach(e=>e.addEventListener('click',()=>{
             return;
 
         }
+        if(e.id!='!'){
         digitArr.push(e.id);
         operator=e.id;
         digits.textContent+=e.id;
         prevInput.textContent=digits.textContent;
         digits.textContent='';
         console.log('test');
-
+        }
 
 
 }))
@@ -207,8 +208,16 @@ delBtn.addEventListener('click',()=>{
 })
 
 decimal.addEventListener('click',()=>{
-    if (digitArr.at(-1)!="."){
+    
+    if (digitArr.at(-1)!="." && digits.textContent.indexOf('.')==-1){
     digitArr.push('.');
     digits.textContent+='.';
+    return;
+    
     }
+    else if (digitArr.at(-1)!="."&& !prevInput.textContent.indexOf('.')==-1){
+        digitArr.push('.');
+        digits.textContent+='.';
+    }
+    
 })
