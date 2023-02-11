@@ -39,12 +39,16 @@ function factorial(a){
     }
     return fac;
 }
+function power(a,b){
+    return a**b;
+}
 
 const OPS_FNS={
     "+":add,
     "-":subtract,
     "X":multiply,
     "/":divide,
+    "^":power
 
 };
 
@@ -72,6 +76,10 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
+    // u cant enter operators before numbers
+    if(digits.textContent==''&&prevInput.textContent==''){
+        return
+    }
     if (operator!=''){
         digitArr[digitArr.indexOf(operator)]=e.id;
         digitArr.filter(e=>e!='');
