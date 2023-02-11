@@ -56,7 +56,8 @@ function operate(){
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
     console.log(numberArr[0]);
-    return OPS_FNS[operator]([parseFloat(numberArr[0])],[parseFloat(numberArr[1])]);
+    console.log(numberArr[1]);
+    return OPS_FNS[operator](parseFloat(numberArr[0]),parseFloat(numberArr[1]));
 }
 //--------EVENTS---------------
 
