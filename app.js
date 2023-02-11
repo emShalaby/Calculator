@@ -74,5 +74,8 @@ equal.addEventListener('click',()=>{
     numberArr=digitArr.join('').split(`${operator}`)
     output.style.display='flex';
     output.textContent=operate(operator,numberArr[0],numberArr[1]);
-    
+    digits.textContent='';
+    digitArr=[];
+    numberArr=[];
+    operator='';
 })
