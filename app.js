@@ -55,35 +55,8 @@ function operate(){
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
-<<<<<<< HEAD
     console.log(numberArr[0]);
     return OPS_FNS[operator]([parseFloat(numberArr[0])],[parseFloat(numberArr[1])]);
-=======
-    try{
-    if (operator=='+'){
-            
-        return numberArr.reduce((a,b)=>parseFloat(a)+parseFloat(b));
-        
-        }
-    if (operator=='-'){
-        return numberArr.reduce((a,b)=>parseFloat(a)-parseFloat(b));
-        }
-    if (operator=='/'){
-        
-        return numberArr.reduce((a,b)=>{parseFloat(a)/parseFloat(b)});
-        }
-    if (operator=='X'){
-        return numberArr.reduce((a,b)=>parseFloat(a)*parseFloat(b));
-        }
-    
-    if (operator=='^'){
-        return numberArr.reduce((a,b)=>parseFloat(a)**parseFloat(b));
-    }
-}
-catch(error){
-    return 0;
-}
->>>>>>> main
 }
 //--------EVENTS---------------
 
