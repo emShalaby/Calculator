@@ -112,7 +112,7 @@ operators.forEach(e=>e.addEventListener('click',()=>{
 
 equal.addEventListener('click',()=>{
 
-    
+    if(digits.textContent!=''){
     prevInput.textContent='';
     if (operator!=''){
     
@@ -144,7 +144,7 @@ equal.addEventListener('click',()=>{
         
 
     }
-    
+}
 
 })
 
@@ -202,7 +202,8 @@ delBtn.addEventListener('click',()=>{
         digitArr[digitArr.length-1]=digitArr[digitArr.length-1].slice(0,-1);
     }
         //remove empty strings
-        digitArr.filter(e=>e!='');
+        digitArr=digitArr.filter(e=>e!='');
+
 })
 
 decimal.addEventListener('click',()=>{
