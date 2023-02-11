@@ -54,17 +54,7 @@ function operate(){
     let numberArr=digitArr.join('').split(`${operator}`)
     return OPS_FNS[operator](parseFloat(numberArr[0]),parseFloat(numberArr[1]));
 }
-function removeEmptyStrings(arr){
-    let i=0
-        while(i<arr.length){
-        if(arr[i]===''){
-            arr=arr.splice(i,1);
-        }else{
-            ++i;
-        }
-        
-    }
-}
+
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
@@ -83,10 +73,10 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 
 operators.forEach(e=>e.addEventListener('click',()=>{
     //factorial is just built different
-    if (digitArr[0]){
+    console.log(digitArr,'before using an operator')
+    if (digitArr[0]&&digitArr[digitArr.length-1]!=operator){
         if (e.id=='!' &&operator==''){
             digitArr=digitArr.join('');
-            console.log(digitArr);
             Ans=factorial(digitArr);
             digits.textContent='';
             digitArr=[];
@@ -95,25 +85,31 @@ operators.forEach(e=>e.addEventListener('click',()=>{
             return;
 
         }
-        else if (operator!='' &&e.id!='!'){
-            operator=`${e.id}`;
-            digitArr[1]=e.id;
+
         
-        }
         else if (operator=='' && e.id!="!"){
         digits.textContent='';
         operator=`${e.id}`;
         digitArr=[digitArr.join('')];
         digitArr.push(operator);
         }
+         
+        else if (digitArr[1]==operator){
+            digitArr[1]=e.id;
+            operator=`${e.id}`;
+        }
+            
+        
         if (digitArr[0]==''){
             digitArr=[];
         }
         if(digitArr[0]&&digitArr[1]){
         prevInput.textContent=digitArr[0]+digitArr[1];
+        digits.textContent='';
         }
 
     }
+    console.log(digitArr,'after using an operator');
 }))
 
 equal.addEventListener('click',()=>{
@@ -188,19 +184,24 @@ answerBtn.addEventListener('click',()=>{
     }
 
 })
+
 delBtn.addEventListener('click',()=>{
+    if(digits.textContent!=''|prevInput.textContent!=''){
     digits.textContent=digits.textContent.slice(0,-1);
-    console.log(digitArr[digitArr.length-1]);
+    if (digitArr.length>0){
     digitArr[digitArr.length-1]=digitArr[digitArr.length-1].slice(0,-1);
-    removeEmptyStrings(digitArr);
-    console.log(digitArr);
+    }
+    else {
+        digitArr.pop();
+    }
     if(digits.textContent==''){
         digits.textContent=prevInput.textContent;
         prevInput.textContent='';
     }
-    
-    
+    digitArr=digitArr.filter((str)=>str!='');
+  
 
+}
 })
 
 decimal.addEventListener('click',()=>{
