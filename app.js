@@ -54,6 +54,17 @@ function operate(){
     let numberArr=digitArr.join('').split(`${operator}`)
     return OPS_FNS[operator](parseFloat(numberArr[0]),parseFloat(numberArr[1]));
 }
+function removeEmptyStrings(arr){
+    let i=0
+        while(i<arr.length){
+        if(arr[i]===''){
+            arr=arr.splice(i,1);
+        }else{
+            ++i;
+        }
+        
+    }
+}
 //--------EVENTS---------------
 
 numberBtns.forEach(e=>e.addEventListener('click',()=>{
@@ -178,13 +189,18 @@ answerBtn.addEventListener('click',()=>{
 
 })
 delBtn.addEventListener('click',()=>{
-    digitArr.pop();
-    if (digits.textContent=='Ans'){
-        digits.textContent='';
-    }
-    else{
     digits.textContent=digits.textContent.slice(0,-1);
+    console.log(digitArr[digitArr.length-1]);
+    digitArr[digitArr.length-1]=digitArr[digitArr.length-1].slice(0,-1);
+    removeEmptyStrings(digitArr);
+    console.log(digitArr);
+    if(digits.textContent==''){
+        digits.textContent=prevInput.textContent;
+        prevInput.textContent='';
     }
+    
+    
+
 })
 
 decimal.addEventListener('click',()=>{
