@@ -158,3 +158,6 @@ button:hover{
 #answer{
     background-color: yellow;
 }
+#prev-input{
+    font-size: 4vh;
+}
