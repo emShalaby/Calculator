@@ -50,9 +50,8 @@ const OPS_FNS={
 
 function operate(){
     // to extract the operator
-    let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     // to get numbers only
-    let numberArr=digitArr.filter(e=>e!=x);
+    let numberArr=digitArr.join('').split(`${operator}`)
     return OPS_FNS[operator](parseFloat(numberArr[0]),parseFloat(numberArr[1]));
 }
 //--------EVENTS---------------
