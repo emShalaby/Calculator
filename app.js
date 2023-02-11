@@ -72,33 +72,36 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 
 operators.forEach(e=>e.addEventListener('click',()=>{
     //factorial is just built different
-    if (e.id=='!' &&operator==''){
-        digitArr=digitArr.join('');
-        console.log(digitArr);
-        Ans=factorial(digitArr);
-        digits.textContent='';
-        digitArr=[];
-        output.textContent=Ans;
-        output.style.display='flex';
-        return;
+    if (digitArr[0]){
+        if (e.id=='!' &&operator==''){
+            digitArr=digitArr.join('');
+            console.log(digitArr);
+            Ans=factorial(digitArr);
+            digits.textContent='';
+            digitArr=[];
+            output.textContent=Ans;
+            output.style.display='flex';
+            return;
 
-    }
-    else if (operator!='' &&e.id!='!'){
-        operator=`${e.id}`;
-        digitArr[1]=e.id;
+        }
+        else if (operator!='' &&e.id!='!'){
+            operator=`${e.id}`;
+            digitArr[1]=e.id;
         
-    }
-    else if (operator=='' && e.id!="!"){
-    digits.textContent='';
-    operator=`${e.id}`;
-    digitArr=[digitArr.join('')];
-    digitArr.push(operator);
-    }
-    if (digitArr[0]==''){
-        digitArr=[];
-    }
-    if(digitArr[0]&&digitArr[1]){
-    prevInput.textContent=digitArr[0]+digitArr[1];
+        }
+        else if (operator=='' && e.id!="!"){
+        digits.textContent='';
+        operator=`${e.id}`;
+        digitArr=[digitArr.join('')];
+        digitArr.push(operator);
+        }
+        if (digitArr[0]==''){
+            digitArr=[];
+        }
+        if(digitArr[0]&&digitArr[1]){
+        prevInput.textContent=digitArr[0]+digitArr[1];
+        }
+
     }
 }))
 
