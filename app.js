@@ -24,8 +24,6 @@ function add(a,b) {
     return a-b;
  }
   
-
-  
 function multiply(a,b) {
 
     return a*b;
@@ -55,8 +53,6 @@ function operate(){
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
-    console.log(numberArr[0]);
-    console.log(numberArr[1]);
     return OPS_FNS[operator](parseFloat(numberArr[0]),parseFloat(numberArr[1]));
 }
 //--------EVENTS---------------
@@ -88,12 +84,12 @@ operators.forEach(e=>e.addEventListener('click',()=>{
         return;
 
     }
-    else if (operator!=('')){
+    else if (operator!='' &&e.id!='!'){
         operator=`${e.id}`;
         digitArr[1]=e.id;
         
     }
-    else if (operator==''){
+    else if (operator=='' && e.id!="!"){
     digits.textContent='';
     operator=`${e.id}`;
     digitArr=[digitArr.join('')];
