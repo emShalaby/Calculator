@@ -46,9 +46,19 @@ const OPS_FNS={
 
 };
 
-function operate(){
+function operate(op,num1,num2){
 
-    return OPS_FNS[operator](parseFloat(numberArr[0]),parseFloat(numberArr[1]));
+    return OPS_FNS[op](parseFloat(num1),parseFloat(num2));
 }
 //--------EVENTS---------------
 
+numberBtns.forEach(e=>e.addEventListener('click',()=>{
+    digits.textContent+=e.id;
+}))
+
+operators.forEach(e=>e.addEventListener('click',()=>{
+    digits.textContent+=e.id;
+}))
+delBtn.addEventListener('click',()=>{
+    digits.textContent=digits.textContent.slice(0,-1);
+})
