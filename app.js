@@ -180,7 +180,9 @@ delBtn.addEventListener('click',()=>{
         digitArr.pop();
     }
     if(digits.textContent==''){
-        digits.textContent=prevInput.textContent;
+        
+        digits.textContent=prevInput.textContent
+        digits.textContent=digits.textContent.slice(0,-1);
         prevInput.textContent='';
     }
     digitArr=digitArr.filter((str)=>str!='');
