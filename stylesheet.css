@@ -45,16 +45,15 @@ body,html{
 .screen{
 
     min-width: 100px;
-    max-height: 18vh;
-    min-height: 120px;
+    height: 18vh;
+
+    min-height: 40px;
     background: green;
     align-self: center;
     border-radius: .6vw;
     display: flex;
     flex-wrap: wrap;
     width: 100%;
-    height: 100%;
-    flex-grow: 1;
 }
 
 .keys{
