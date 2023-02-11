@@ -74,7 +74,7 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 operators.forEach(e=>e.addEventListener('click',()=>{
     //factorial is just built different
     console.log(digitArr,'before using an operator')
-    if (digitArr[0]&&digitArr[digitArr.length-1]!=operator){
+    if (digitArr[0]&&digitArr[digitArr.length-1]!=operator&& !digitArr[digitArr.indexOf(operator)]){
         if (e.id=='!' &&operator==''){
             digitArr=digitArr.join('');
             Ans=factorial(digitArr);
@@ -85,31 +85,15 @@ operators.forEach(e=>e.addEventListener('click',()=>{
             return;
 
         }
-
-        
-        else if (operator=='' && e.id!="!"){
+        digits.textContent+=e.id;
+        prevInput.textContent=digits.textContent;
         digits.textContent='';
         operator=`${e.id}`;
-        digitArr=[digitArr.join('')];
         digitArr.push(operator);
-        }
-         
-        else if (digitArr[1]==operator){
-            digitArr[1]=e.id;
-            operator=`${e.id}`;
-        }
-            
         
-        if (digitArr[0]==''){
-            digitArr=[];
-        }
-        if(digitArr[0]&&digitArr[1]){
-        prevInput.textContent=digitArr[0]+digitArr[1];
-        digits.textContent='';
-        }
-
     }
-    console.log(digitArr,'after using an operator');
+    console.log(digitArr,'after using operator');
+
 }))
 
 equal.addEventListener('click',()=>{
@@ -142,6 +126,7 @@ equal.addEventListener('click',()=>{
         output.style.display='flex';
         output.textContent=Ans;
         digitArr=[];
+        digits.textContent='';
         
 
     }
