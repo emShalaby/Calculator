@@ -51,13 +51,39 @@ const OPS_FNS={
 };
 
 function operate(){
-    console.log(digitArr);
     // to extract the operator
     let x=digitArr.splice(digitArr.indexOf(`${operator}`),1);
     // to get numbers only
     let numberArr=digitArr.filter(e=>e!=x);
+<<<<<<< HEAD
     console.log(numberArr[0]);
     return OPS_FNS[operator]([parseFloat(numberArr[0])],[parseFloat(numberArr[1])]);
+=======
+    try{
+    if (operator=='+'){
+            
+        return numberArr.reduce((a,b)=>parseFloat(a)+parseFloat(b));
+        
+        }
+    if (operator=='-'){
+        return numberArr.reduce((a,b)=>parseFloat(a)-parseFloat(b));
+        }
+    if (operator=='/'){
+        
+        return numberArr.reduce((a,b)=>{parseFloat(a)/parseFloat(b)});
+        }
+    if (operator=='X'){
+        return numberArr.reduce((a,b)=>parseFloat(a)*parseFloat(b));
+        }
+    
+    if (operator=='^'){
+        return numberArr.reduce((a,b)=>parseFloat(a)**parseFloat(b));
+    }
+}
+catch(error){
+    return 0;
+}
+>>>>>>> main
 }
 //--------EVENTS---------------
 
@@ -77,16 +103,18 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 
 operators.forEach(e=>e.addEventListener('click',()=>{
     //factorial is just built different
-    if (e.id=='!' &&!digitArr[1]){
+    if (e.id=='!' &&operator==''){
         digitArr=digitArr.join('');
-        Ans=factorial(digitArr[0]);
+        console.log(digitArr);
+        Ans=factorial(digitArr);
         digits.textContent='';
         digitArr=[];
         output.textContent=Ans;
         output.style.display='flex';
+        return;
 
     }
-    else if (operator!=(''|'!')){
+    else if (operator!=('')){
         operator=`${e.id}`;
         digitArr[1]=e.id;
         
@@ -96,7 +124,6 @@ operators.forEach(e=>e.addEventListener('click',()=>{
     operator=`${e.id}`;
     digitArr=[digitArr.join('')];
     digitArr.push(operator);
-    console.log(digitArr);
     }
     if (digitArr[0]==''){
         digitArr=[];
@@ -189,9 +216,8 @@ delBtn.addEventListener('click',()=>{
 })
 
 decimal.addEventListener('click',()=>{
-    if (digitArr[-1]!='.' && digitArr[0]){
-        digitArr.push('.');
-        digits.textContent+='.';
+    if (digitArr.at(-1)!="."){
+    digitArr.push('.');
+    digits.textContent+='.';
     }
-    
 })
