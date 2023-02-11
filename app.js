@@ -72,9 +72,15 @@ numberBtns.forEach(e=>e.addEventListener('click',()=>{
 }))
 
 operators.forEach(e=>e.addEventListener('click',()=>{
-    //factorial is just built different
-    console.log(digitArr,'before using an operator')
-    if (digitArr[0]&&digitArr[digitArr.length-1]!=operator&& !digitArr[digitArr.indexOf(operator)]){
+    if (operator!=''){
+        digitArr[digitArr.indexOf(operator)]=e.id;
+        digitArr.filter(e=>e!='');
+        prevInput.textContent=prevInput.textContent.replace(operator,e.id)
+        operator=e.id;
+        return;
+    }
+    console.log(digitArr,'before using an operator') 
+        //factorial is just built different
         if (e.id=='!' &&operator==''){
             digitArr=digitArr.join('');
             Ans=factorial(digitArr);
@@ -85,14 +91,14 @@ operators.forEach(e=>e.addEventListener('click',()=>{
             return;
 
         }
+        digitArr.push(e.id);
+        operator=e.id;
         digits.textContent+=e.id;
         prevInput.textContent=digits.textContent;
         digits.textContent='';
-        operator=`${e.id}`;
-        digitArr.push(operator);
-        
-    }
-    console.log(digitArr,'after using operator');
+        console.log('test');
+
+
 
 }))
 
@@ -171,24 +177,24 @@ answerBtn.addEventListener('click',()=>{
 })
 
 delBtn.addEventListener('click',()=>{
-    if(digits.textContent!=''|prevInput.textContent!=''){
-    digits.textContent=digits.textContent.slice(0,-1);
-    if (digitArr.length>0){
-    digitArr[digitArr.length-1]=digitArr[digitArr.length-1].slice(0,-1);
-    }
-    else {
-        digitArr.pop();
-    }
-    if(digits.textContent==''){
-        
-        digits.textContent=prevInput.textContent
-        digits.textContent=digits.textContent.slice(0,-1);
-        prevInput.textContent='';
-    }
-    digitArr=digitArr.filter((str)=>str!='');
-  
 
-}
+    // last digit
+    let lastDigit=digitArr[digitArr.length-1];
+    if (lastDigit==operator){
+        operator='';
+    }
+    if (digits.textContent!=''){
+        digits.textContent=digits.textContent.slice(0,-1)
+        digitArr[digitArr.length-1]=digitArr[digitArr.length-1].slice(0,-1);
+    }
+    else if (digits.textContent==''){
+        digits.textContent=prevInput.textContent;
+        prevInput.textContent='';
+        digits.textContent=digits.textContent.slice(0,-1)
+        digitArr[digitArr.length-1]=digitArr[digitArr.length-1].slice(0,-1);
+    }
+        //remove empty strings
+        digitArr.filter(e=>e!='');
 })
 
 decimal.addEventListener('click',()=>{
